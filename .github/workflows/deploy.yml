@@ -38,6 +38,18 @@ jobs:
           cp -r app29.1/dist deploy/app29.1
           cp -r app29.2/dist deploy/app29.2
 
+      - name: Create gh-pages branch if it doesn't exist
+        run: |
+          git fetch origin
+          if ! git rev-parse --verify origin/gh-pages; then
+            git checkout --orphan gh-pages
+            git rm -rf .
+            echo "First deployment" > README.md
+            git add README.md
+            git commit -m "Initialize gh-pages branch"
+            git push origin gh-pages
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

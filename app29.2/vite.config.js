@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/app29.2/',
+  base: '/hillel-react-hw29/app29.2/',
 })
