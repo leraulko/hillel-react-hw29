@@ -1,0 +1,45 @@
+name: Deploy two Vite apps to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.9.0
+
+      - name: Install and build app29.1
+        run: |
+          cd app29.1
+          npm install
+          npm run build
+          cd ..
+
+      - name: Install and build app29.2
+        run: |
+          cd app29.2
+          npm install
+          npm run build
+          cd ..
+
+      - name: Prepare deploy folder
+        run: |
+          mkdir deploy
+          cp -r app29.1/dist deploy/app29.1
+          cp -r app29.2/dist deploy/app29.2
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy

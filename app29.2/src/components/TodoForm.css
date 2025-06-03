@@ -1,0 +1,34 @@
+.todo-form {
+    height: 40px;
+    display: flex;
+    gap: 15px;
+}
+
+.todo-input {
+    color: black;
+    padding-left: 10px;
+    width: 350px;
+    border: 1px gray solid;
+    border-radius: 10px;
+    background-color: rgb(232, 232, 232);
+}
+
+.add-btn {
+    width: 120px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    background-color: #FF5944;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.priority-select {
+    background: transparent;
+    color: black;
+    border: 1px gray solid;
+    border-radius: 10px;
+}
